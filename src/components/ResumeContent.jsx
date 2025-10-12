@@ -1,4 +1,4 @@
-import { GraduationCap, Briefcase, BookOpen, Cpu, Database, Wrench, Zap } from "lucide-react";
+import { GraduationCap, Briefcase, BookOpen, Cpu } from "lucide-react";
 
 export default function ResumeContent() {
   const education = [
@@ -6,13 +6,23 @@ export default function ResumeContent() {
       institution: "Technological University Dublin",
       degree: "B.Sc. (Hons.) in Computing (Computer Science Specialisation)",
       location: "Dublin, Ireland",
-      period: "Sept 2021 – June 2025"
-    }
+      period: "Sept 2021 – June 2025",
+    },
   ];
 
   const coursework = {
-    "Algorithms & Systems": ["Derivation of Algorithms", "Computer Vision", "Ubiquitous Computing", "Web Services"],
-    "AI & Data": ["Computational Intelligence", "Data Analytics", "Applied Human Language Technology", "Text Analysis"]
+    "Algorithms & Systems": [
+      "Derivation of Algorithms",
+      "Computer Vision",
+      "Ubiquitous Computing",
+      "Web Services",
+    ],
+    "AI & Data": [
+      "Computational Intelligence",
+      "Data Analytics",
+      "Applied Human Language Technology",
+      "Text Analysis",
+    ],
   };
 
   const experience = [
@@ -22,10 +32,10 @@ export default function ResumeContent() {
       location: "Dublin, Ireland",
       period: "June 2018 – June 2019",
       achievements: [
-        "Gained first-hand experience working in a high-pressure, time-critical environment with constant coordination between teams",
-        "Learned to adapt quickly to shifting priorities and unexpected logistical challenges",
-        "Built resilience, reliability, and discipline by working long shifts in a demanding operational setting"
-      ]
+        "Gained hands-on experience in high-pressure logistics coordination.",
+        "Adapted quickly to shifting operational priorities and challenges.",
+        "Built strong reliability and discipline through long-hour shifts.",
+      ],
     },
     {
       company: "Produce Warehouse",
@@ -33,116 +43,107 @@ export default function ResumeContent() {
       location: "Dublin, Ireland",
       period: "June 2016 – July 2018",
       achievements: [
-        "Maintained accuracy and efficiency while preparing and processing large volumes of orders",
-        "Developed strong attention to detail through inventory checks and quality control",
-        "Built resilience and discipline by consistently meeting tight deadlines in a demanding environment"
-      ]
-    }
+        "Maintained accuracy while processing large volumes of orders.",
+        "Developed attention to detail through inventory and quality control.",
+        "Built discipline by meeting tight deadlines in a demanding environment.",
+      ],
+    },
   ];
 
   const technicalSkills = {
-    "Languages & Systems": ["C++ (real-time networking, multiplayer server)", "Python (FastAPI, Django)", "JavaScript/TypeScript (React, Next.js)"],
-    "Databases": ["PostgreSQL (primary)", "MySQL", "MongoDB"],
+    "Languages & Systems": [
+      "C++ (real-time networking, multiplayer server)",
+      "Python (FastAPI, Django)",
+      "JavaScript/TypeScript (React, Next.js)",
+    ],
+    Databases: ["PostgreSQL (primary)", "MySQL", "MongoDB"],
     "Tools & DevOps": ["Docker (deployment & CI/CD)", "Jenkins", "Linux", "CMake"],
-    "Specialties": ["WebSockets", "distributed systems", "REST API design"]
+    Specialties: ["WebSockets", "Distributed Systems", "REST API Design"],
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
+      {/* Header */}
       <section>
-        <h1 className="text-xl font-bold mb-3 flex items-center gap-2">
+        <h1 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
           Resume
-          <div className="w-6 h-0.5 bg-yellow-400"></div>
+          <div className="w-10 h-0.5 bg-yellow-400"></div>
         </h1>
       </section>
 
-      {/* Education Section */}
+      {/* Education */}
       <section>
-        <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
+        <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-white">
           <GraduationCap size={18} className="text-yellow-400" />
           Education
           <div className="w-4 h-0.5 bg-yellow-400"></div>
         </h2>
-        <div className="relative">
-          {education.map((edu, index) => (
-            <div key={index} className="relative pl-6 pb-6">
-              <div className="absolute left-0 top-1 w-2 h-2 bg-yellow-400 rounded-full"></div>
-              <div className="ml-4">
-                <h3 className="font-bold text-white">{edu.institution}</h3>
-                <p className="text-yellow-400 text-sm mb-1">{edu.period}</p>
-                <p className="text-gray-300 text-sm">{edu.degree}</p>
-                <p className="text-gray-400 text-xs">{edu.location}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        {education.map((edu, index) => (
+          <div key={index} className="bg-[#1a1a1a] p-4 rounded-lg shadow-md">
+            <h3 className="font-bold text-white text-base">{edu.institution}</h3>
+            <p className="text-gray-400 text-sm">{edu.degree}</p>
+            <p className="text-yellow-400 text-sm">{edu.period}</p>
+            <p className="text-gray-500 text-xs">{edu.location}</p>
+          </div>
+        ))}
       </section>
 
-      {/* Relevant Coursework Section */}
+      {/* Coursework */}
       <section>
-        <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
+        <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-white">
           <BookOpen size={18} className="text-yellow-400" />
           Relevant Coursework
           <div className="w-4 h-0.5 bg-yellow-400"></div>
         </h2>
-        <div className="space-y-3">
-          {Object.entries(coursework).map(([category, courses], index) => (
-            <div key={index} className="relative pl-6">
-              <div className="absolute left-0 top-1 w-2 h-2 bg-yellow-400 rounded-full"></div>
-              <div className="ml-4">
-                <h3 className="font-bold text-white text-sm">{category}:</h3>
-                <p className="text-gray-300 text-sm">{courses.join(", ")}</p>
-              </div>
+        <div className="grid gap-3">
+          {Object.entries(coursework).map(([category, courses], i) => (
+            <div key={i} className="bg-[#1a1a1a] p-4 rounded-lg shadow-sm">
+              <h3 className="font-bold text-white text-sm mb-1">{category}</h3>
+              <p className="text-gray-300 text-sm">{courses.join(", ")}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Experience Section */}
+      {/* Experience */}
       <section>
-        <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
+        <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-white">
           <Briefcase size={18} className="text-yellow-400" />
           Experience
           <div className="w-4 h-0.5 bg-yellow-400"></div>
         </h2>
-        <div className="relative">
+        <div className="space-y-5">
           {experience.map((exp, index) => (
-            <div key={index} className="relative pl-6 pb-6">
-              <div className="absolute left-0 top-1 w-2 h-2 bg-yellow-400 rounded-full"></div>
-              <div className="ml-4">
-                <h3 className="font-bold text-white">{exp.position}</h3>
-                <p className="font-semibold text-blue-400 text-sm">{exp.company}</p>
-                <p className="text-yellow-400 text-sm mb-2">{exp.period}</p>
-                <p className="text-gray-400 text-xs mb-2">{exp.location}</p>
-                <ul className="space-y-1">
-                  {exp.achievements.map((achievement, achIndex) => (
-                    <li key={achIndex} className="text-gray-300 text-sm flex items-start gap-2">
-                      <div className="w-1 h-1 bg-gray-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <span>{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div key={index} className="bg-[#1a1a1a] p-4 rounded-lg shadow-md">
+              <h3 className="font-bold text-white text-base">{exp.position}</h3>
+              <p className="text-blue-400 text-sm">{exp.company}</p>
+              <p className="text-yellow-400 text-sm">{exp.period}</p>
+              <p className="text-gray-500 text-xs mb-3">{exp.location}</p>
+              <ul className="space-y-1">
+                {exp.achievements.map((a, i) => (
+                  <li key={i} className="text-gray-300 text-sm flex gap-2">
+                    <span className="text-yellow-400 mt-1.5">•</span>
+                    {a}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Technical Skills Section */}
+      {/* Technical Skills */}
       <section>
-        <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
+        <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-white">
           <Cpu size={18} className="text-yellow-400" />
           Technical Skills
           <div className="w-4 h-0.5 bg-yellow-400"></div>
         </h2>
-        <div className="space-y-3">
-          {Object.entries(technicalSkills).map(([category, skills], index) => (
-            <div key={index} className="relative pl-6">
-              <div className="absolute left-0 top-1 w-2 h-2 bg-yellow-400 rounded-full"></div>
-              <div className="ml-4">
-                <h3 className="font-bold text-white text-sm">{category}:</h3>
-                <p className="text-gray-300 text-sm">{skills.join(", ")}</p>
-              </div>
+        <div className="grid gap-3">
+          {Object.entries(technicalSkills).map(([category, skills], i) => (
+            <div key={i} className="bg-[#1a1a1a] p-4 rounded-lg shadow-sm">
+              <h3 className="font-bold text-white text-sm mb-1">{category}</h3>
+              <p className="text-gray-300 text-sm">{skills.join(", ")}</p>
             </div>
           ))}
         </div>
