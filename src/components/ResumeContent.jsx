@@ -6,24 +6,24 @@ export default function ResumeContent() {
       institution: "Technological University Dublin",
       degree: "B.Sc. (Hons.) in Computing (Computer Science Specialisation)",
       location: "Dublin, Ireland",
-      period: "Sept 2021 – June 2025",
+      period: "Sept 2021 – 31 Oct 2025",
     },
   ];
 
-  const coursework = {
-    "Algorithms & Systems": [
-      "Derivation of Algorithms",
-      "Computer Vision",
-      "Ubiquitous Computing",
-      "Web Services",
-    ],
-    "AI & Data": [
-      "Computational Intelligence",
-      "Data Analytics",
-      "Applied Human Language Technology",
-      "Text Analysis",
-    ],
-  };
+const coursework = {
+  "Systems & Algorithms": [
+    "Distributed Systems",
+    "Derivation of Algorithms",
+    "Web Services",
+    "Ubiquitous Computing",
+  ],
+  "AI & Data": [
+    "Computational Intelligence",
+    "Data Analytics",
+    "Applied Human Language Technology",
+    "Text Analysis",
+  ],
+};
 
   const experience = [
     {
@@ -50,16 +50,35 @@ export default function ResumeContent() {
     },
   ];
 
-  const technicalSkills = {
-    "Languages & Systems": [
-      "C++ (real-time networking, multiplayer server)",
-      "Python (FastAPI, Django)",
-      "JavaScript/TypeScript (React, Next.js)",
-    ],
-    Databases: ["PostgreSQL (primary)", "MySQL", "MongoDB"],
-    "Tools & DevOps": ["Docker (deployment & CI/CD)", "Jenkins", "Linux", "CMake"],
-    Specialties: ["WebSockets", "Distributed Systems", "REST API Design"],
-  };
+const technicalSkills = {
+  "Languages & Systems": [
+    "C++ (Boost.Asio, multithreading, real-time networking)",
+    "Python (FastAPI, Django)",
+    "JavaScript/TypeScript (React, Next.js)",
+  ],
+  "Networking & Protocols": [
+    "WebSockets",
+    "REST APIs",
+    "gRPC",
+    "Protocol Buffers",
+  ],
+  Databases: ["PostgreSQL", "MySQL", "MongoDB"],
+  "DevOps & Tools": [
+    "Docker",
+    "GitHub Actions",
+    "Jenkins",
+    "Linux",
+    "CMake",
+    "CI/CD Pipelines",
+  ],
+  "Focus Areas": [
+    "Backend Systems",
+    "Real-Time Networking",
+    "Distributed Architectures",
+    "Scalability",
+  ],
+};
+
 
   return (
     <div className="space-y-10">
@@ -105,7 +124,25 @@ export default function ResumeContent() {
         </div>
       </section>
 
-      {/* Experience */}
+
+
+      {/* Technical Skills */}
+      <section>
+        <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-white">
+          <Cpu size={18} className="text-yellow-400" />
+          Technical Skills
+          <div className="w-4 h-0.5 bg-yellow-400"></div>
+        </h2>
+        <div className="grid gap-3">
+          {Object.entries(technicalSkills).map(([category, skills], i) => (
+            <div key={i} className="bg-[#1a1a1a] p-4 rounded-lg shadow-sm">
+              <h3 className="font-bold text-white text-sm mb-1">{category}</h3>
+              <p className="text-gray-300 text-sm">{skills.join(", ")}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+            {/* Experience */}
       <section>
         <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-white">
           <Briefcase size={18} className="text-yellow-400" />
@@ -127,23 +164,6 @@ export default function ResumeContent() {
                   </li>
                 ))}
               </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Technical Skills */}
-      <section>
-        <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-white">
-          <Cpu size={18} className="text-yellow-400" />
-          Technical Skills
-          <div className="w-4 h-0.5 bg-yellow-400"></div>
-        </h2>
-        <div className="grid gap-3">
-          {Object.entries(technicalSkills).map(([category, skills], i) => (
-            <div key={i} className="bg-[#1a1a1a] p-4 rounded-lg shadow-sm">
-              <h3 className="font-bold text-white text-sm mb-1">{category}</h3>
-              <p className="text-gray-300 text-sm">{skills.join(", ")}</p>
             </div>
           ))}
         </div>
