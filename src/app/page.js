@@ -37,7 +37,12 @@ export default function Home() {
 
           {/* Tab Content */}
           <div className="flex-1 overflow-y-auto p-2">
-            {activeTab === "home" && <HomeContent />}
+            {activeTab === "home" && (
+              <HomeContent
+                onViewPortfolio={() => setActiveTab("portfolio")}
+                onViewResume={() => setActiveTab("resume")}
+              />
+            )}
             {activeTab === "about" && <AboutContent />}
             {activeTab === "portfolio" && <PortfolioContent />}
             {activeTab === "resume" && <ResumeContent />}

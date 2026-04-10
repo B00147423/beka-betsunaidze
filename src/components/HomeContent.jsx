@@ -1,91 +1,166 @@
-import { Brain, Code, Workflow, Camera, Gamepad2 } from "lucide-react";
+import {
+  ArrowRight,
+  Gamepad2,
+  Github,
+  Linkedin,
+  Mail,
+  Radio,
+  Server,
+  Zap,
+} from "lucide-react";
 import Card from "./Card";
 import TestimonialCard from "./TestimonialCard";
 
-export default function HomeContent() {
-  return (
-    <div className="space-y-6">
-      {/* What I'm Doing Section */}
-      <section>
-        <h1 className="text-xl font-bold mb-3 flex items-center gap-2">
-          What I'm Doing
-          <div className="w-6 h-0.5 bg-yellow-400"></div>
-        </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <Card
-            icon={<Brain />}
-            title="Learning"
-            text="Exploring computer science and AI to solve real-world problems."
-          />
-          <Card
-            icon={<Code />}
-            title="Coding"
-            text="Building full-stack projects using C++, Python, and JavaScript."
-          />
-          <Card
-            icon={<Workflow />}
-            title="Automation"
-            text="Automating workflows using scripts and APIs."
-          />
-          <Card
-            icon={<Camera />}
-            title="Documentation"
-            text="Documenting my work and sharing knowledge with others."
-          />
+const EMAIL = "mailto:betsunaidzeb@gmail.com";
+const LINKEDIN =
+  "https://www.linkedin.com/in/beka-betsunaidze-76b612292";
 
-          {/* Game Engine Development*/}
-          <div className="bg-[#1b1b1b] p-4 rounded-xl shadow hover:shadow-lg transition col-span-1 sm:col-span-2">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
-                <Gamepad2 size={24} className="text-white" />
-              </div>
-              <div>
-                <h3 className="font-bold text-white">Game Engine Development</h3>
-                <p className="text-gray-400 text-sm">
-                  Building custom engines from the ground up
-                </p>
-              </div>
-            </div>
-            <p className="text-gray-300 text-sm leading-relaxed mb-3">
-              I'm deeply passionate about game engine development and real-time rendering. 
-              Currently working on <span className="text-blue-400 font-semibold">Chained</span>, 
-              a custom 2D game engine built with C++, OpenGL, and ImGui. 
-              I love the challenge of creating efficient rendering pipelines, implementing ECS architectures, 
-              and building tools that empower game developers.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {["C++", "OpenGL", "ImGui", "ECS", "Real-time Rendering"].map((tech) => (
-                <span
-                  key={tech}
-                  className="px-2 py-1 bg-gray-800 text-xs rounded-full text-gray-300 border border-gray-700"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
+export default function HomeContent({
+  onViewPortfolio,
+  onViewResume,
+}) {
+  return (
+    <div className="space-y-8">
+      <section className="border border-gray-800 rounded-xl bg-[#121212] p-5 sm:p-6">
+        <h1 className="text-white leading-tight mb-3">
+          <span className="block text-2xl sm:text-3xl font-bold tracking-tight">
+            Backend &amp; Real-Time Systems Developer
+          </span>
+          <span className="block text-lg sm:text-xl font-semibold text-gray-300 mt-2">
+            C++, WebSockets, FastAPI, Django — multiplayer backends
+          </span>
+        </h1>
+        <p className="text-gray-400 text-sm mb-4">
+          Built and load-tested systems to 20K+ concurrent users (simulated, Locust).
+        </p>
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {[
+            "C++",
+            "FastAPI",
+            "Django",
+            "WebSockets",
+            "PostgreSQL",
+            "Docker",
+          ].map((label) => (
+            <span
+              key={label}
+              className="px-2.5 py-1 text-xs rounded-md bg-[#1b1b1b] text-gray-400 border border-gray-800"
+            >
+              {label}
+            </span>
+          ))}
+        </div>
+
+        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
+          <a
+            href={EMAIL}
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-yellow-400 text-gray-900 px-4 py-2.5 text-sm font-semibold hover:bg-yellow-300 transition-colors"
+          >
+            <Mail size={16} strokeWidth={2.5} />
+            Email
+          </a>
+          <a
+            href={LINKEDIN}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-600 text-gray-200 px-4 py-2.5 text-sm font-medium hover:border-yellow-400/60 hover:text-white transition-colors"
+          >
+            <Linkedin size={16} />
+            LinkedIn
+          </a>
+          <button
+            type="button"
+            onClick={onViewPortfolio}
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#1f1f1f] text-gray-200 px-4 py-2.5 text-sm font-medium hover:bg-[#2a2a2a] transition-colors border border-gray-800"
+          >
+            Projects
+            <ArrowRight size={16} />
+          </button>
+          <button
+            type="button"
+            onClick={onViewResume}
+            className="inline-flex items-center justify-center gap-2 rounded-lg text-gray-500 px-4 py-2.5 text-sm hover:text-gray-300 transition-colors sm:ml-0"
+          >
+            Resume
+          </button>
         </div>
       </section>
 
-      {/* Testimonials Section */}
       <section>
-        <h2 className="text-xl font-bold mb-3">Testimonials</h2>
+        <h2 className="text-lg font-bold mb-3 flex items-center gap-2 text-white">
+          Focus
+          <div className="w-6 h-0.5 bg-yellow-400" aria-hidden />
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <Card
+            icon={<Server />}
+            title="APIs &amp; data"
+            text="FastAPI/Django, PostgreSQL, migrations, Docker images and deploy."
+          />
+          <Card
+            icon={<Radio />}
+            title="WebSockets"
+            text="Room state, broadcast ordering, reconnect handling."
+          />
+          <Card
+            icon={<Zap />}
+            title="C++ servers"
+            text="Threads, accept/read loops, queues, profiling under load."
+          />
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold mb-3 flex items-center gap-2 text-white">
+          Chained — 2D engine
+          <div className="w-6 h-0.5 bg-yellow-400" aria-hidden />
+        </h2>
+        <div className="bg-[#1b1b1b] p-4 rounded-xl border border-gray-800">
+          <div className="flex items-start gap-3 mb-3">
+            <div className="w-11 h-11 bg-[#252525] rounded-lg flex items-center justify-center border border-gray-700 shrink-0">
+              <Gamepad2 size={22} className="text-gray-300" />
+            </div>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Tile renderer and editor in C++/OpenGL/ImGui: batched draws,
+              scene JSON/binary, editor state split from serialized scenes.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {["C++", "OpenGL", "ImGui", "JSON"].map((tech) => (
+              <span
+                key={tech}
+                className="px-2 py-0.5 bg-[#141414] text-xs rounded text-gray-400 border border-gray-800"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+          <a
+            href="https://github.com/B00147423/Chained"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 mt-4 text-sm text-gray-400 hover:text-yellow-400 transition-colors"
+          >
+            <Github size={14} />
+            github.com/B00147423/Chained
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold mb-3 text-white">Testimonials</h2>
         <div className="grid sm:grid-cols-2 gap-3">
           <TestimonialCard
-            name="Project Collaborator"
-            text="Beka is an excellent developer with strong problem-solving skills and attention to detail."
+            name="Project collaborator"
+            text="Strong problem-solving and attention to detail on shared technical work."
             avatar="👨‍💻"
           />
           <TestimonialCard
-            name="Team Lead"
-            text="Great communication skills and always delivers high-quality code on time."
+            name="Team lead"
+            text="Clear communication and consistent delivery of quality code."
             avatar="👩‍💼"
           />
-        </div>
-        <div className="flex gap-1 mt-4">
-          <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-          <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
-          <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
         </div>
       </section>
     </div>
