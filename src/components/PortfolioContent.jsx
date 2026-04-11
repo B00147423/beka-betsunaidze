@@ -52,24 +52,24 @@ export default function PortfolioContent() {
       status: "In Progress",
     },
     {
-      title: "Tile2DEngine (Chained)",
-      subtitle: "C++ · OpenGL · ImGui",
+      title: "Tile2DEngine",
+      subtitle: "C++ · OpenGL · ImGui · JSON · 2025–present",
       summary:
-        "OpenGL tile renderer and ImGui editor; scenes load/save as JSON or binary.",
+        "Custom 2D tile engine and ImGui level editor: real-time scene editing, OpenGL rendering, JSON scene serialization.",
       points: [
-        "Batched draws; removed redundant GL state changes on large tile layers.",
-        "Editor state separate from serialized scene files on disk.",
-        "Asset reload: fixed texture handle leaks found under repeat reload.",
+        "Editor + renderer in C++/OpenGL/ImGui for real-time tile placement, camera, and zoom.",
+        "Draw batching and GL state discipline for dense tile layers; interactive frame budget.",
+        "Serialization: JSON (README); editor mutations kept off the serialized scene path until save.",
       ],
       challenge: [
-        "Dense maps issued too many draw calls and GL state toggles per frame.",
-        "Undo and reload could race the draw thread if they wrote the same GPU buffers.",
+        "Dense maps: too many draw calls and GL toggles per frame while editing.",
+        "Undo/reload must not race the render thread or corrupt in-flight GPU resources.",
       ],
       impact: [
-        "Lower frame time on dense maps after batching draws.",
-        "Undo/reload write to staging buffers; render reads a snapshot, not in-flight editor writes.",
+        "Lower frame time on stress maps after batching and fewer redundant state changes.",
+        "Undo/reload use buffers separate from the live draw path so editor state stays consistent.",
       ],
-      github: "https://github.com/B00147423/Chained",
+      github: "https://github.com/B00147423/Tile2DEngine",
       status: "In Progress",
     },
     {

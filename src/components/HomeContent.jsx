@@ -112,19 +112,32 @@ export default function HomeContent({
       </section>
 
       <section>
-        <h2 className="text-lg font-bold mb-3 flex items-center gap-2 text-white">
-          Chained — 2D engine
+        <h2 className="text-lg font-bold mb-1 flex items-center gap-2 text-white">
+          Tile2DEngine — 2D engine
           <div className="w-6 h-0.5 bg-yellow-400" aria-hidden />
         </h2>
+        <p className="text-xs text-gray-500 mb-3">
+          C++, OpenGL, ImGui, JSON · 2025–present
+        </p>
         <div className="bg-[#1b1b1b] p-4 rounded-xl border border-gray-800">
           <div className="flex items-start gap-3 mb-3">
             <div className="w-11 h-11 bg-[#252525] rounded-lg flex items-center justify-center border border-gray-700 shrink-0">
               <Gamepad2 size={22} className="text-gray-300" />
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Tile renderer and editor in C++/OpenGL/ImGui: batched draws,
-              scene JSON/binary, editor state split from serialized scenes.
-            </p>
+            <ul className="text-gray-400 text-sm leading-relaxed space-y-2 list-disc list-inside marker:text-yellow-600/80">
+              <li>
+                Real-time scene editing and rendering: custom tile engine and
+                editor in C++ with OpenGL and ImGui.
+              </li>
+              <li>
+                GPU-oriented draw path, camera controls, and zoom for interactive
+                editing.
+              </li>
+              <li>
+                Deterministic serialization (JSON; binary path where used),
+                decoupled from live editor state.
+              </li>
+            </ul>
           </div>
           <div className="flex flex-wrap gap-2">
             {["C++", "OpenGL", "ImGui", "JSON"].map((tech) => (
@@ -137,13 +150,13 @@ export default function HomeContent({
             ))}
           </div>
           <a
-            href="https://github.com/B00147423/Chained"
+            href="https://github.com/B00147423/Tile2DEngine"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 mt-4 text-sm text-gray-400 hover:text-yellow-400 transition-colors"
           >
             <Github size={14} />
-            github.com/B00147423/Chained
+            github.com/B00147423/Tile2DEngine
           </a>
         </div>
       </section>
