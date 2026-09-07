@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Beka Betsunaidze — Backend & Systems Engineer",
+  title: "Beka Betsunaidze — Software Engineer",
   description:
-    "Backend, real-time systems, and low-latency services — C++, Python, WebSockets, PostgreSQL. Based in Dublin, Ireland.",
+    "Computing graduate and software engineer in Dublin. Full-stack, backend and real-time systems — Google Play app, Python, TypeScript, C++, Docker, PostgreSQL.",
 };
 
 export default function RootLayout({ children }) {

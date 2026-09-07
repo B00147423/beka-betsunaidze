@@ -43,9 +43,7 @@ useEffect(() => {
             <h2 className="text-base font-semibold text-white leading-tight">
               Beka Betsunaidze
             </h2>
-            <p className="text-xs text-gray-400">
-              Backend &amp; systems engineering
-            </p>
+            <p className="text-xs text-gray-400">Software Engineer</p>
           </div>
         </div>
 

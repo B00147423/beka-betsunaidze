@@ -1,96 +1,106 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Smartphone } from "lucide-react";
 
 const statusColors = {
+  Published: "bg-green-900/80 text-green-300 border border-green-800/80",
   Completed: "bg-green-900/80 text-green-300 border border-green-800/80",
   "In Progress": "bg-yellow-900/50 text-yellow-200 border border-yellow-800/60",
 };
 
 const EMAIL = "mailto:betsunaidzeb@gmail.com";
+const PLAY_STORE =
+  "https://play.google.com/store/apps/details?id=com.bekabets.gymtracker";
 
 export default function PortfolioContent() {
   const projects = [
     {
-      title: "Jigsaw",
-      subtitle: "Django · WebSockets · PostgreSQL · Docker",
+      title: "Tracket",
+      subtitle: "Gym Log & Planner · React Native (Expo) · Supabase · PostgreSQL",
       summary:
-        "ASGI Django app: WebSocket channels for room state, scoring, ordered pushes to peers.",
+        "Published a workout tracking app on Google Play for planning, logging and reviewing training.",
       points: [
-        "Authoritative room state in Django; ordered WebSocket fan-out per room.",
-        "Room lifecycle: create, join, leave, teardown with cleanup on exit.",
-        "Docker image; CI runs tests before deploy.",
+        "User-specific workout planning and logging with session history.",
+        "Personal records, exercise history and weight/volume progression.",
+        "Built with React Native (Expo), Supabase and PostgreSQL.",
       ],
       challenge: [
-        "Reconnects and concurrent joins had to keep in-memory room state aligned with PostgreSQL rows.",
-        "Burst room creation hit connection pool limits until pool size and timeouts were raised.",
+        "Designing workout planning and logging flows that stay clear across sessions and history views.",
+        "Keeping progression and personal-record data consistent for each user over time.",
       ],
       impact: [
-        "Locust (HTTP + WS): pool exhaustion stopped after increasing pool size and deadlines.",
-        "Reconnect handler applies pending updates in order so joiners match room state.",
+        "Published on Google Play for real users outside a university environment.",
+        "Delivers planning, logging and review in one mobile workflow.",
+      ],
+      highlight: "Published on Google Play",
+      highlightTone: "play",
+      github: null,
+      playStore: PLAY_STORE,
+      status: "Published",
+    },
+    {
+      title: "GuessIO",
+      subtitle:
+        "Twitch Multiplayer Drawing Game · TypeScript · Node.js · FastAPI · PostgreSQL · WebSockets · Docker",
+      summary:
+        "Architected a three-service real-time application with a WebSocket server, FastAPI backend and browser client.",
+      points: [
+        "Multiplayer synchronization with reconnect recovery and persistent room state.",
+        "Twitch integrations feeding game events into the real-time pipeline.",
+        "Services containerized with Docker for consistent local and deploy environments.",
+      ],
+      challenge: [
+        "Keeping room state consistent across reconnects and concurrent players.",
+        "Coordinating WebSocket fan-out with FastAPI persistence under load.",
+      ],
+      impact: [
+        "Load tested with 20,000+ simulated concurrent users.",
+        "Stable multiplayer sessions with ordered updates and durable room data.",
+      ],
+      highlight: "Load tested with 20,000+ simulated concurrent users",
+      highlightTone: "load",
+      github: "https://github.com/B00147423/GuessIO",
+      status: "Completed",
+    },
+    {
+      title: "Jigsaw",
+      subtitle:
+        "Collaborative Puzzle Platform · Django · WebSockets · Docker · PostgreSQL · JavaScript",
+      summary:
+        "Built real-time shared and competitive puzzle modes using Django Channels and WebSockets.",
+      points: [
+        "Server-side piece locking and synchronized multiplayer state.",
+        "Persistent sessions and scoring across shared and competitive modes.",
+        "Dockerized deployment with PostgreSQL-backed persistence.",
+      ],
+      challenge: [
+        "Preventing conflicting piece moves under concurrent player actions.",
+        "Keeping client views aligned with authoritative server state after reconnects.",
+      ],
+      impact: [
+        "Reliable shared and competitive play with locked pieces and live scores.",
+        "Sessions survive reconnects without losing puzzle progress.",
       ],
       github: "https://github.com/B00147423/DjangoProject",
       status: "Completed",
     },
     {
-      title: "GuessIO",
-      subtitle: "FastAPI · C++ · WebSockets · PostgreSQL · IRC",
-      summary:
-        "FastAPI + PostgreSQL for API and scores; C++ process for WebSockets, IRC parse, broadcast.",
-      points: [
-        "IRC lines parsed into a bounded queue feeding game logic.",
-        "FastAPI writes scores to PostgreSQL; C++ fans out game events without blocking the Python process.",
-        "Max queue depth on the C++ side; drops oldest entries when full.",
-      ],
-      challenge: [
-        "IRC message bursts overlapped with drawing and guess traffic on one host.",
-        "Only FastAPI writes to PostgreSQL; C++ must not duplicate durable state.",
-      ],
-      impact: [
-        "Moving broadcast to C++ removed lock contention on the Python process during IRC spikes.",
-        "Over-cap queue drops bounded memory instead of unbounded growth.",
-      ],
-      github: "https://github.com/B00147423/GuessIO",
-      status: "In Progress",
-    },
-    {
       title: "Tile2DEngine",
-      subtitle: "C++ · OpenGL · ImGui · JSON · 2025–present",
+      subtitle: "2D Game Engine & Editor · C++ · OpenGL · ImGui · JSON",
       summary:
-        "Custom 2D tile engine and ImGui level editor: real-time scene editing, OpenGL rendering, JSON scene serialization.",
+        "Built a custom C++ 2D engine and editor with real-time scene editing, GPU-accelerated rendering, deterministic serialization and asset hot-reloading.",
       points: [
-        "Editor + renderer in C++/OpenGL/ImGui for real-time tile placement, camera, and zoom.",
-        "Draw batching and GL state discipline for dense tile layers; interactive frame budget.",
-        "Serialization: JSON (README); editor mutations kept off the serialized scene path until save.",
+        "Real-time scene editing with OpenGL rendering and ImGui tooling.",
+        "Deterministic JSON serialization decoupled from live editor state.",
+        "Asset hot-reloading to iterate on scenes without full restarts.",
       ],
       challenge: [
-        "Dense maps: too many draw calls and GL toggles per frame while editing.",
-        "Undo/reload must not race the render thread or corrupt in-flight GPU resources.",
+        "Keeping editor mutations safe relative to the live render path.",
+        "Maintaining interactive frame budgets on dense tile maps.",
       ],
       impact: [
-        "Lower frame time on stress maps after batching and fewer redundant state changes.",
-        "Undo/reload use buffers separate from the live draw path so editor state stays consistent.",
+        "Interactive editing with GPU-accelerated draw path and camera controls.",
+        "Scenes reload and serialize predictably for iterative development.",
       ],
       github: "https://github.com/B00147423/Tile2DEngine",
-      status: "In Progress",
-    },
-    {
-      title: "GuessIOConnection",
-      subtitle: "C++ · WebSockets · Winsock / Boost.Asio · IRC",
-      summary:
-        "Standalone server: async accept/read, IRC tokenizer, threaded broadcast to WebSocket clients.",
-      points: [
-        "Non-blocking reads; each client has a send queue capped at a fixed max length.",
-        "IRC tokenizer reassembles lines across partial TCP reads.",
-        "Profiled broadcast path; reduced lock hold time on shared outbound state.",
-      ],
-      challenge: [
-        "Many connects/disconnects and fan-out without growing thread count without bound.",
-        "Reconnect bursts filled memory if outbound queues had no cap.",
-      ],
-      impact: [
-        "Locust: stable at 20K+ concurrent users (simulated, Locust), peak test.",
-        "Narrowed broadcast lock scope; capped client queues drop sends when full instead of growing memory without bound.",
-      ],
-      github: "https://github.com/B00147423/GuessIOConnection",
       status: "In Progress",
     },
   ];
@@ -102,12 +112,15 @@ export default function PortfolioContent() {
           Portfolio
           <div className="w-6 h-0.5 bg-yellow-400" aria-hidden />
         </h1>
+        <p className="text-gray-500 text-sm mt-2">
+          Full-stack, backend and real-time projects — strongest evidence first.
+        </p>
       </section>
 
       <div className="space-y-4">
         {projects.map((project) => (
           <article
-            key={project.github}
+            key={project.title}
             className="rounded-xl border border-gray-800 bg-[#121212] overflow-hidden"
           >
             <div className="px-4 py-3 border-b border-gray-800 flex flex-wrap items-center justify-between gap-2">
@@ -119,11 +132,27 @@ export default function PortfolioContent() {
                   {project.subtitle}
                 </p>
               </div>
-              <span
-                className={`shrink-0 px-2 py-0.5 text-[11px] rounded font-medium ${statusColors[project.status]}`}
-              >
-                {project.status}
-              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                {project.highlight && (
+                  <span
+                    className={`inline-flex items-center gap-1 px-2 py-0.5 text-[11px] rounded font-semibold border ${
+                      project.highlightTone === "play"
+                        ? "bg-green-900/40 text-green-300 border-green-800/70"
+                        : "bg-yellow-900/40 text-yellow-200 border-yellow-800/60"
+                    }`}
+                  >
+                    {project.highlightTone === "play" && (
+                      <Smartphone size={11} />
+                    )}
+                    {project.highlight}
+                  </span>
+                )}
+                <span
+                  className={`shrink-0 px-2 py-0.5 text-[11px] rounded font-medium ${statusColors[project.status]}`}
+                >
+                  {project.status}
+                </span>
+              </div>
             </div>
 
             <div className="p-4 text-sm space-y-4">
@@ -158,17 +187,30 @@ export default function PortfolioContent() {
                 </div>
               </div>
 
-              <div className="border-t border-gray-800/80 pt-3">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-yellow-400 transition-colors"
-                >
-                  <Github size={15} />
-                  Source
-                  <ExternalLink size={12} className="opacity-60" />
-                </a>
+              <div className="border-t border-gray-800/80 pt-3 flex flex-wrap gap-4">
+                {project.playStore && (
+                  <a
+                    href={project.playStore}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-green-400 hover:text-green-300 transition-colors font-medium"
+                  >
+                    <ExternalLink size={15} />
+                    Google Play
+                  </a>
+                )}
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-yellow-400 transition-colors"
+                  >
+                    <Github size={15} />
+                    Source
+                    <ExternalLink size={12} className="opacity-60" />
+                  </a>
+                )}
               </div>
             </div>
           </article>
